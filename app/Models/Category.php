@@ -7,28 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-  use HasFactory;
+    use HasFactory;
 
-  protected $fillable = [
-    'name',
-  ];
+    protected $fillable = [
+        'name',
+    ];
 
-  protected $guarded = [
-    'id',
-  ];
+    protected $guarded = [
+        'id',
+    ];
 
-  public static function getIdFromCategoryName(String $categoryName)
-  {
-    $faildId = -1;
-    if (is_null($categoryName)) {
-      return $faildId;
+    public static function getIdFromCategoryName(String $categoryName)
+    {
+        $faildId = -1;
+        if (is_null($categoryName)) {
+            return $faildId;
+        }
+
+        $category = self::where('name', $categoryName)->first();
+        if (is_null($category)) {
+            return $faildId;
+        }
+
+        return $category->id;
     }
-
-    $category = self::where('name', $categoryName)->first();
-    if (is_null($category)) {
-      return $faildId;
-    }
-
-    return $category->id;
-  }
 }

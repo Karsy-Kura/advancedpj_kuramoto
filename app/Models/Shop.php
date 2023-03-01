@@ -7,16 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shop extends Model
 {
-  use HasFactory;
+    use HasFactory;
 
-  protected $fillable = [
-    'name',
-    'area_id',
-    'category_id',
-    'description',
-  ];
+    protected $fillable = [
+        'name',
+        'area_id',
+        'category_id',
+        'description',
+    ];
 
-  protected $guarded = [
-    'id',
-  ];
+    protected $guarded = [
+        'id',
+    ];
 }

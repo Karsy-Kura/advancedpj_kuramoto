@@ -6,31 +6,31 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateReservesTable extends Migration
 {
-  /**
-   * Run the migrations.
-   *
-   * @return void
-   */
-  public function up()
-  {
-    Schema::create('reserves', function (Blueprint $table) {
-      $table->id();
-      $table->foreignId('user_id')->constrained('users');
-      $table->foreignId('shop_id')->constrained('shops');
-      $table->dateTime('datetime');
-      $table->unsignedInteger('num_of_people');
-      $table->timestamps();
-      $table->softDeletes();
-    });
-  }
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('reserves', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('shop_id')->constrained('shops');
+            $table->dateTime('datetime');
+            $table->unsignedInteger('num_of_people');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+    }
 
-  /**
-   * Reverse the migrations.
-   *
-   * @return void
-   */
-  public function down()
-  {
-    Schema::dropIfExists('reserves');
-  }
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('reserves');
+    }
 }

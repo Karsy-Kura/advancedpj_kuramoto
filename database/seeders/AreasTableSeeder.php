@@ -7,30 +7,29 @@ use App\Models\Area;
 
 class AreasTableSeeder extends Seeder
 {
-  use \App\Traits\CsvTrait;
+    use \App\Traits\CsvTrait;
 
-  /**
-   * Run the database seeds.
-   *
-   * @return void
-   */
-  public function run()
-  {
-    // load data from csv.
-    $filePath = public_path() . '/csv/AreaList.csv';
-    $file = $this->getCsvFileFromFilePath($filePath);
-
-    $counter = 0;
-    foreach ($file as $line)
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
     {
-      // skip header line.
-      $counter++;
-      if ($counter == 1) {
-        continue;
-      }
+        // load data from csv.
+        $filePath = public_path() . '/csv/AreaList.csv';
+        $file = $this->getCsvFileFromFilePath($filePath);
 
-      // create record.
-      Area::firstOrCreate(['name' => $line[0]]);
+        $counter = 0;
+        foreach ($file as $line) {
+            // skip header line.
+            $counter++;
+            if ($counter == 1) {
+                continue;
+            }
+
+            // create record.
+            Area::firstOrCreate(['name' => $line[0]]);
+        }
     }
-  }
 }

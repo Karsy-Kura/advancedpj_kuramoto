@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Favorite extends Model
 {
-  use HasFactory;
+    use HasFactory;
 
-  protected $guarded = [
-    'user_id',
-    'shop_id',
-  ];
+    protected $guarded = [
+        'user_id',
+        'shop_id',
+    ];
 }

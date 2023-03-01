@@ -8,28 +8,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Area extends Model
 {
-  use HasFactory;
+    use HasFactory;
 
-  protected $fillable = [
-    'name',
-  ];
+    protected $fillable = [
+        'name',
+    ];
 
-  protected $guarded = [
-    'id',
-  ];
+    protected $guarded = [
+        'id',
+    ];
 
-  public static function getIdFromAreaName(String $areaName)
-  {
-    $faildId = -1;
-    if (is_null($areaName)) {
-      return $faildId;
+    public static function getIdFromAreaName(String $areaName)
+    {
+        $faildId = -1;
+        if (is_null($areaName)) {
+            return $faildId;
+        }
+
+        $area = self::where('name', $areaName)->first();
+        if (is_null($area)) {
+            return $faildId;
+        }
+
+        return $area->id;
     }
-
-    $area = self::where('name', $areaName)->first();
-    if (is_null($area)) {
-      return $faildId;
-    }
-
-    return $area->id;
-  }
 }
