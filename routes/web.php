@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ReserveController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +17,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('guest')->group(function () {
+
+    Route::get('/', [ShopController::class, 'index']);
+
+    Route::group(['prefix' => 'detail'], function () {
+        Route::get('{shopId}', [ShopController::class, 'detail']);
+        Route::post('{shopId}/reserve', [ShopController::class, 'reserve']);
+    });
+
+    Route::get('/search', [ShopController::class, 'search']);
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware('auth')->group(function () {
 
-require __DIR__.'/auth.php';
+    // Todo : auth.php に移すのが正しければそちらに移す.
+    Route::post('thanks', [RegisteredUserController::class, 'store']);
+
+    Route::get('mypage', [UserController::class, 'index']);
+
+    Route::group(['prefix' => 'reserve'], function() {
+        Route::post('create', [ReserveController::class, 'store']);
+        Route::post('delete', [ReserveController::class, 'destroy']);
+    });
+
+    Route::group(['prefix' => 'favorite'], function() {
+        Route::post('create', [FavoriteController::class, 'store']);
+        Route::post('delete', [FavoriteController::class, 'destroy']);
+    });
+});
+
+
+require __DIR__ . '/auth.php';
