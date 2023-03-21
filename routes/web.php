@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\ShopController;
@@ -31,7 +32,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
 
-    // Todo : auth.php に移すのが正しければそちらに移す.
+    // Todo : 想定した関数に飛ばない.
     Route::post('thanks', [RegisteredUserController::class, 'store']);
 
     Route::get('mypage', [UserController::class, 'index']);
@@ -47,5 +48,8 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';

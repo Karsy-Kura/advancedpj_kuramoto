@@ -64,7 +64,15 @@ body {
   padding: 10px;
   border-radius: 10%;
 }
+.auth-card__thanks-text {
+  margin: 50px auto;
+  font-size: 20px;
+  color: #000;
+}
 
 .align-right {
   text-align: right;
+}
+.align-center {
+  text-align: center;
 }/*# sourceMappingURL=auth.css.map */
