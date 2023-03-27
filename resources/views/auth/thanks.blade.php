@@ -11,30 +11,22 @@
     <link rel="stylesheet" href="./css/reset.css">
 </head>
 
-<body>
-    <div class="wrap">
-        <header class="header">
-            <div class="header__logo">
-                <h1 class="header__logo-text">Rese</h1>
-            </div>
-        </header>
+@extends('layouts.common')
 
-        <section class="content">
-            <div class="auth-card">
-                <div class="auth-card__input">
-                    <div class="auth-card__input__elem align-center">
-                        <p class="auth-card__thanks-text">会員登録ありがとうございます</p>
-                    </div>
-                    <form action="/login" method="get">
-                        @csrf
-                        <div class="auth-card__input__elem align-center">
-                            <button class="auth-card__input__button">ログインする</button>
-                        </div>
-                    </form>
-                </div>
+@section('content')
+<div class="auth-card">
+    <div class="auth-card__input">
+        <div class="auth-card__input__elem align-center">
+            <p class="auth-card__thanks-text">会員登録ありがとうございます</p>
+        </div>
+        <form action="/login" method="get">
+            @csrf
+            <div class="auth-card__input__elem align-center">
+                <button class="auth-card__input__button">ログインする</button>
             </div>
-        </section>
+        </form>
     </div>
-</body>
+</div>
+@endsection
 
 </html>
