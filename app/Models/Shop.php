@@ -19,4 +19,22 @@ class Shop extends Model
     protected $guarded = [
         'id',
     ];
+
+    public function getAreaAttribute()
+    {
+        $area = Area::find($this->area_id);
+        if ($area === null) {
+            return;
+        }
+        return $area->name;
+    }
+
+    public function getGenreAttribute()
+    {
+        $genre = Category::find($this->category_id);
+        if ($genre === null) {
+            return;
+        }
+        return $genre->name;
+    }
 }

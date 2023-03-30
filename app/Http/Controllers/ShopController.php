@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Area;
+use App\Models\Category;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,17 @@ class ShopController extends Controller
      */
     public function index()
     {
-        //
+        $shops = Shop::all();
+        $areas = Area::all();
+        $genre = Category::all();
+
+        $param = [
+            'shops' => $shops,
+            'areas' => $areas,
+            'genres' => $genre,
+        ];
+
+        return view('index', $param);
     }
 
     /**
