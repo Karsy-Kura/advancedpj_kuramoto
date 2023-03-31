@@ -16,9 +16,27 @@
     <div class="wrap">
         <header class="header">
             <div class="header__logo">
-                <h1 class="header__logo-text">Rese</h1>
+                <button class="header__logo--button" id="header__logo--button">
+                    <span class="header__logo--button__line--top"></span>
+                    <span class="header__logo--button__line--middle"></span>
+                    <span class="header__logo--button__line--middle"></span>
+                    <span class="header__logo--button__line--bottom"></span>
+                </button>
+                <h1 class="header__logo--text">Rese</h1>
             </div>
-            @yield('header-sub')
+            <div class="header__menu" id="header__menu">
+                <ul>
+                    <li class="header__menu__elem"><a href="/">Home</a></li>
+                    @if(Auth::check())
+                    <li class="header__menu__elem"><a href="/logout">Logout</a></li>
+                    <li class="header__menu__elem"><a href="/mypage">MyPage</a></li>
+                    @else
+                    <li class="header__menu__elem"><a href="/register">Register</a></li>
+                    <li class="header__menu__elem"><a href="/login">Login</a></li>
+                    @endif
+                </ul>
+            </div>
+            @yield('header--sub')
         </header>
 
         <section class="content">
@@ -26,5 +44,6 @@
         </section>
     </div>
 </body>
+<script src="./js/common.js"></script>
 
 </html>

@@ -1,16 +1,16 @@
-.auth-card {
+.auth--card {
   width: 300px;
   height: 400px;
   margin: 100px auto;
   font-size: 16px;
-  border-radius: 10%;
 }
-.auth-card__header {
+.auth--card__header {
   color: #fff;
   background-color: #305dff;
   padding: 15px;
+  border-radius: 10px 10px 0 0;
 }
-.auth-card__input {
+.auth--card__input {
   color: #4b4b4b;
   background-color: #fff;
   font-size: 80%;
@@ -18,34 +18,35 @@
   display: flex;
   flex-direction: column;
   padding: 10px 7.5%;
+  border-radius: 0 0 10px 10px;
 }
-.auth-card__input__elem-logo {
+.auth--card__input__elem--logo {
   width: 12.5%;
   margin-right: 2.5%;
 }
-.auth-card__input__elem-text {
+.auth--card__input__elem--text {
   width: 85%;
   border: 1pt none #4b4b4b;
   border-bottom: 1pt solid #4b4b4b;
   margin: 15px auto;
   padding: 0;
 }
-.auth-card__input__button {
+.auth--card__input__button {
   color: #fff;
   background-color: #305dff;
   margin: 15px auto;
   padding: 10px;
   border-radius: 10%;
 }
-.auth-card__thanks-text {
+.auth--card__thanks--text {
   margin: 50px auto;
   font-size: 20px;
   color: #000;
 }
 
-.align-right {
+.align--right {
   text-align: right;
 }
-.align-center {
+.align--center {
   text-align: center;
 }/*# sourceMappingURL=auth.css.map */
