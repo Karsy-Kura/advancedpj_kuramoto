@@ -1,11 +1,13 @@
 @extends('layouts.common')
 
-@section('css', 'shop.css')
+<?php
+    $cssPath = asset("/css/shop.css");
+?>
+@section('css', $cssPath)
 
 @section('header--sub')
 <div class="search--cond">
     <form action="/search" method="get" class="search--cond__form">
-        @csrf
         <div class="search--cond__wrap--select">
             <select name="area" class="search--cond__select">
                 <option selected>All area</option>
@@ -36,18 +38,19 @@
         @foreach ($shops as $shop)
         <div class="shop--card">
             <img src="/img/test.png" class="shop--list__card__img">
+
             <div class="shop--card__text">
                 <h2 class="shop--card__name">{{ $shop->name }}</h2>
-                <p>
-                    <span class="shop--card__tag">#{{ $shop->area }}</span>
-                    <span class="shop--card__tag">#{{ $shop->genre }}</span>
+                <p class="shop--card__tag">
+                    <span>#{{ $shop->area }}</span>
+                    <span>#{{ $shop->genre }}</span>
                 </p>
             </div>
+
             <div class="shop--card__footer">
-                <form action="/detail/{{$shop->id}}" method="get">
-                    @csrf
-                    <button class="shop--card__button--detail">詳しく見る</button>
-                </form>
+                <button class="shop--card__button--detail" onclick="location.href='/detail/{{$shop->id}}'">
+                    詳しく見る
+                </button>
                 <button class="shop--card__button--favorite">&hearts;</button>
             </div>
         </div>

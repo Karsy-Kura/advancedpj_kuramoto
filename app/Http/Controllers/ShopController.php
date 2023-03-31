@@ -30,13 +30,22 @@ class ShopController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the detail infomation of shop from shop id
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function detail($id)
     {
-        //
+        $shop = Shop::find($id);
+        if ($shop === null) {
+            redirect('/');
+        }
+
+        $param = [
+            'shop' => $shop,
+        ];
+        return view('shop-detail', $param);
     }
 
     /**

@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rese</title>
-    <link rel="stylesheet" href="./css/app.css">
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/@yield('css')">
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/common.css') }}">
+    <link rel="stylesheet" href='@yield("css")'>
+    @yield('head--add')
 </head>
 
 <body>
@@ -31,7 +32,7 @@
                     <li class="header__menu__elem"><a href="/logout">Logout</a></li>
                     <li class="header__menu__elem"><a href="/mypage">MyPage</a></li>
                     @else
-                    <li class="header__menu__elem"><a href="/register">Register</a></li>
+                    <li class="header__menu__elem"><a href="/register">Registeration</a></li>
                     <li class="header__menu__elem"><a href="/login">Login</a></li>
                     @endif
                 </ul>
@@ -44,6 +45,6 @@
         </section>
     </div>
 </body>
-<script src="./js/common.js"></script>
+<script src="{{ asset('/js/common.js') }}"></script>
 
 </html>
