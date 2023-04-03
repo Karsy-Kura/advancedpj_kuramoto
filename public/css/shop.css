@@ -74,9 +74,7 @@
   justify-content: space-around;
 }
 .shop--card {
-  width: 24%;
-  min-width: 200px;
-  max-width: 350px;
+  width: 260px;
   margin-bottom: 30px;
   background-color: #fff;
   border: 1pt solid #ddd;

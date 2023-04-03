@@ -29,36 +29,37 @@ $cssPath = asset("/css/shop.css");
         </p>
     </div>
     <div class="shop--detail__reserve">
-        <div class="shop--detail__reserve__content">
-            <h1>予約</h1>
-            <form action="/reserve" method="post">
-                @csrf
+        <form action="/reserve/create" method="post">
+            @csrf
+            <div class="shop--detail__reserve__content">
+                <h1>予約</h1>
+                <input type="number" name="shop_id" class="display--none" value="{{$shop->id}}">
                 <input class="shop--detail__reserve__form--input" type="date" name="date" id="formDate" onchange="reflectValue('Date')">
                 <select class="shop--detail__reserve__form--select" name="time" id="formTime" onchange="reflectValue('Time')"></select>
                 <select class="shop--detail__reserve__form--select" name="num_of_people" id="formNumOfPeople" onchange="reflectValue('NumOfPeople')"></select>
-            </form>
-            <div class="shop--detail__reserve__confirm">
-                <table>
-                    <tr class="shop--detail__reserve__confirm--tr">
-                        <td>Shop</td>
-                        <td>{{$shop->name}}</td>
-                    </tr>
-                    <tr class="shop--detail__reserve__confirm--tr">
-                        <td>Date</td>
-                        <td id="confirmDate"></td>
-                    </tr>
-                    <tr class="shop--detail__reserve__confirm--tr">
-                        <td>Time</td>
-                        <td id="confirmTime"></td>
-                    </tr>
-                    <tr class="shop--detail__reserve__confirm--tr">
-                        <td>Number</td>
-                        <td id="confirmNumOfPeople"></td>
-                    </tr>
-                </table>
+                <div class="shop--detail__reserve__confirm">
+                    <table>
+                        <tr class="shop--detail__reserve__confirm--tr">
+                            <td>Shop</td>
+                            <td>{{$shop->name}}</td>
+                        </tr>
+                        <tr class="shop--detail__reserve__confirm--tr">
+                            <td>Date</td>
+                            <td id="confirmDate"></td>
+                        </tr>
+                        <tr class="shop--detail__reserve__confirm--tr">
+                            <td>Time</td>
+                            <td id="confirmTime"></td>
+                        </tr>
+                        <tr class="shop--detail__reserve__confirm--tr">
+                            <td>Number</td>
+                            <td id="confirmNumOfPeople"></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-        </div>
-        <button class="shop--detail__reserve__button">予約する</button>
+            <button class="shop--detail__reserve__button">予約する</button>
+        </form>
     </div>
 </div>
 

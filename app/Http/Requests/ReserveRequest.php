@@ -26,8 +26,8 @@ class ReserveRequest extends FormRequest
     {
         return [
             //
-            'date' => ['required', 'date'],
-            'time' => ['required', 'time'],
+            'date' => ['required', 'date', 'date_format:Y-m-d'],
+            'time' => ['required', 'date_format:H:i'],
             'num_of_people' => ['required', 'integer', 'min:1', 'max:9999'],
         ];
     }

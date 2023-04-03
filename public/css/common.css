@@ -101,4 +101,8 @@ body {
 
 .in {
   transform: translateX(100%);
+}
+
+.display--none {
+  display: none;
 }/*# sourceMappingURL=common.css.map */
