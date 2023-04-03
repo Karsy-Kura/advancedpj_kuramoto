@@ -1,6 +1,9 @@
 @extends('layouts.common')
 
-@section('css', 'auth.css')
+<?php
+    $cssPath = asset("/css/auth.css");
+?>
+@section('css', $cssPath)
 
 @section('content')
 <div class="auth--card">

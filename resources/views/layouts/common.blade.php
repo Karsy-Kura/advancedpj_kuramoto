@@ -29,7 +29,12 @@
                 <ul>
                     <li class="header__menu__elem"><a href="/">Home</a></li>
                     @if(Auth::check())
-                    <li class="header__menu__elem"><a href="/logout">Logout</a></li>
+                    <li class="header__menu__elem">
+                        <form action="{{ route('logout')}}" method="post">
+                            @csrf
+                            <button>Logout</button>
+                        </form>
+                    </li>
                     <li class="header__menu__elem"><a href="/mypage">MyPage</a></li>
                     @else
                     <li class="header__menu__elem"><a href="/register">Registeration</a></li>

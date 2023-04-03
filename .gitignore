@@ -15,4 +15,4 @@ yarn-error.log
 /.vscode
 /public/css/*.scss
 /public/css/*.css.map
-/public/img/*
+/public/img/test.png

@@ -28,12 +28,13 @@ Route::middleware('guest')->group(function () {
     });
 
     Route::get('/search', [ShopController::class, 'search']);
+
+    Route::post('/thanks', [RegisteredUserController::class, 'store']);
 });
 
 Route::middleware('auth')->group(function () {
 
-    // Todo : 想定した関数に飛ばない.
-    Route::post('thanks', [RegisteredUserController::class, 'store']);
+    Route::get('/', [ShopController::class, 'index']);
 
     Route::get('mypage', [UserController::class, 'index']);
 

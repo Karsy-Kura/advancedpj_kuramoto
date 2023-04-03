@@ -1,5 +1,5 @@
 .auth--card {
-  width: 300px;
+  width: 400px;
   height: 400px;
   margin: 100px auto;
   font-size: 16px;
@@ -7,7 +7,7 @@
 .auth--card__header {
   color: #fff;
   background-color: #305dff;
-  padding: 15px;
+  padding: 20px;
   border-radius: 10px 10px 0 0;
 }
 .auth--card__input {
@@ -17,25 +17,29 @@
   margin: 0px auto;
   display: flex;
   flex-direction: column;
-  padding: 10px 7.5%;
+  padding: 5px 7.5%;
   border-radius: 0 0 10px 10px;
 }
-.auth--card__input__elem--logo {
-  width: 12.5%;
+.auth--card__input__elem {
+  margin: 15px auto;
+}
+.auth--card__input__elem--icon {
+  width: 10%;
   margin-right: 2.5%;
+  display: inline-block;
+  transform: translateY(40%);
 }
 .auth--card__input__elem--text {
   width: 85%;
   border: 1pt none #4b4b4b;
   border-bottom: 1pt solid #4b4b4b;
-  margin: 15px auto;
   padding: 0;
 }
 .auth--card__input__button {
   color: #fff;
   background-color: #305dff;
-  margin: 15px auto;
-  padding: 10px;
+  margin: 10px auto;
+  padding: 10px 15px;
   border-radius: 10%;
 }
 .auth--card__thanks--text {

@@ -94,7 +94,7 @@ body {
   font-size: 36px;
   margin: 20px;
 }
-.header__menu__elem a {
+.header__menu__elem a, .header__menu__elem button {
   color: #305dff;
   text-decoration: none;
 }
