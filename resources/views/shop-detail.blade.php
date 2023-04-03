@@ -33,9 +33,9 @@ $cssPath = asset("/css/shop.css");
             <h1>予約</h1>
             <form action="/reserve" method="post">
                 @csrf
-                <input class="shop--detail__reserve__form--input" type="date" name="date" id="formDate">
-                <select class="shop--detail__reserve__form--select" name="time" id="formTime"></select>
-                <select class="shop--detail__reserve__form--select" name="num_of_people" id="formNumOfPeople"></select>
+                <input class="shop--detail__reserve__form--input" type="date" name="date" id="formDate" onchange="reflectValue('Date')">
+                <select class="shop--detail__reserve__form--select" name="time" id="formTime" onchange="reflectValue('Time')"></select>
+                <select class="shop--detail__reserve__form--select" name="num_of_people" id="formNumOfPeople" onchange="reflectValue('NumOfPeople')"></select>
             </form>
             <div class="shop--detail__reserve__confirm">
                 <table>
@@ -45,15 +45,15 @@ $cssPath = asset("/css/shop.css");
                     </tr>
                     <tr class="shop--detail__reserve__confirm--tr">
                         <td>Date</td>
-                        <td>2021-04-01</td>
+                        <td id="confirmDate"></td>
                     </tr>
                     <tr class="shop--detail__reserve__confirm--tr">
                         <td>Time</td>
-                        <td>17:00</td>
+                        <td id="confirmTime"></td>
                     </tr>
                     <tr class="shop--detail__reserve__confirm--tr">
                         <td>Number</td>
-                        <td>1人</td>
+                        <td id="confirmNumOfPeople"></td>
                     </tr>
                 </table>
             </div>

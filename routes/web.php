@@ -18,23 +18,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('guest')->group(function () {
+Route::group(['prefix' => '/'], function () {
 
-    Route::get('/', [ShopController::class, 'index']);
+    Route::get('', [ShopController::class, 'index']);
 
     Route::group(['prefix' => 'detail'], function () {
         Route::get('{shopId}', [ShopController::class, 'detail']);
         Route::post('{shopId}/reserve', [ShopController::class, 'reserve']);
     });
 
-    Route::get('/search', [ShopController::class, 'search']);
+    Route::get('search', [ShopController::class, 'search']);
+});
 
-    Route::post('/thanks', [RegisteredUserController::class, 'store']);
+Route::middleware('guest')->group(function () {
+    Route::post('thanks', [RegisteredUserController::class, 'store']);
 });
 
 Route::middleware('auth')->group(function () {
-
-    Route::get('/', [ShopController::class, 'index']);
 
     Route::get('mypage', [UserController::class, 'index']);
 
