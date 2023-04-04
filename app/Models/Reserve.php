@@ -19,6 +19,14 @@ class Reserve extends Model
         'deleted_at',
     ];
 
+    public function users() {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public function shops() {
+        return $this->belongsTo('App\Models\Shop');
+    }
+
     static public function getReserveInfo($array, $user_id)
     {
         $datetime = $array['date'] . ' ' . $array['time'];

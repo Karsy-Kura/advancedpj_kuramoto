@@ -16,3 +16,6 @@ yarn-error.log
 /public/css/*.scss
 /public/css/*.css.map
 /public/img/test.png
+/resources/sass/app.css
+/resources/sass/*.scss
+/resources/sass/*.css.map

@@ -17,6 +17,10 @@ class Category extends Model
         'id',
     ];
 
+    public function shops() {
+        return $this->hasMany('App\Models\Shop');
+    }
+
     public static function getIdFromCategoryName(String $categoryName)
     {
         $faildId = -1;

@@ -18,6 +18,10 @@ class Area extends Model
         'id',
     ];
 
+    public function shops() {
+        return $this->hasMany('App\Models\Shop');
+    }
+
     public static function getIdFromAreaName(String $areaName)
     {
         $faildId = -1;

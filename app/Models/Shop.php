@@ -20,6 +20,16 @@ class Shop extends Model
         'id',
     ];
 
+    public function reserves()
+    {
+        return $this->hasMany('App\Models\Reserve');
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany('App\Models\Favorite');
+    }
+
     public function getAreaAttribute()
     {
         $area = Area::find($this->area_id);
