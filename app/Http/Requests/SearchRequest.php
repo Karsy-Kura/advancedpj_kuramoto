@@ -26,7 +26,7 @@ class SearchRequest extends FormRequest
         return [
             //
             'area' => ['string', 'max:191'],
-            'category' => ['string', 'max:191'],
+            'genre' => ['string', 'max:191'],
             'store' => ['string', 'max:191'],
         ];
     }

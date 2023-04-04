@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Area;
-use App\Models\Category;
+use App\Models\Genre;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -19,7 +19,7 @@ class ShopController extends Controller
     {
         $shops = Shop::all();
         $areas = Area::all();
-        $genre = Category::all();
+        $genre = Genre::all();
 
         $param = [
             'shops' => $shops,
@@ -85,12 +85,12 @@ class ShopController extends Controller
                         break;
                     }
 
-                    $category = Category::with('shops')->where('name', $value)->first();
-                    if ($category === null) {
+                    $genre = Genre::with('shops')->where('name', $value)->first();
+                    if ($genre === null) {
                         break;
                     }
 
-                    $condition[] = ['category_id', $category->id];
+                    $condition[] = ['genre_id', $genre->id];
                     break;
 
                 case "store":
@@ -117,7 +117,7 @@ class ShopController extends Controller
         }
 
         $areas = Area::all();
-        $genre = Category::all();
+        $genre = Genre::all();
         $param = [
             'shops' => $shops,
             'areas' => $areas,

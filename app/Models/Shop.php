@@ -12,7 +12,7 @@ class Shop extends Model
     protected $fillable = [
         'name',
         'area_id',
-        'category_id',
+        'genre_id',
         'description',
     ];
 
@@ -41,7 +41,7 @@ class Shop extends Model
 
     public function getGenreAttribute()
     {
-        $genre = Category::find($this->category_id);
+        $genre = Genre::find($this->genre_id);
         if ($genre === null) {
             return;
         }

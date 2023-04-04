@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
+use App\Models\Genre;
 use Illuminate\Database\Seeder;
 
-class CategoriesTableSeeder extends Seeder
+class GenresTableSeeder extends Seeder
 {
     use \App\Traits\CsvTrait;
 
@@ -17,7 +17,7 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         // load data from csv.
-        $filePath = public_path() . '/csv/CategoryList.csv';
+        $filePath = public_path() . '/csv/GenreList.csv';
         $file = $this->getCsvFileFromFilePath($filePath);
 
         $counter = 0;
@@ -29,7 +29,7 @@ class CategoriesTableSeeder extends Seeder
             }
 
             // create record.
-            Category::firstOrCreate(['name' => $line[0]]);
+            Genre::firstOrCreate(['name' => $line[0]]);
         }
     }
 }

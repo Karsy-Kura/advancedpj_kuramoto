@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Area;
-use App\Models\Category;
+use App\Models\Genre;
 use App\Models\Shop;
 use Illuminate\Database\Seeder;
 
@@ -14,7 +14,7 @@ class ShopsTableSeeder extends Seeder
     private const SHOP_TABLE_COLUMNS = [
         'name',
         'area_id',
-        'category_id',
+        'genre_id',
         'description'
     ];
     /**
@@ -38,15 +38,15 @@ class ShopsTableSeeder extends Seeder
             }
 
             $areaId = self::getAreaId($line[1], $counter);
-            $categoryId = self::getCategoryId($line[2], $counter);
-            if (($areaId == -1) || ($categoryId == -1)) {
+            $genreId = self::getGenreId($line[2], $counter);
+            if (($areaId == -1) || ($genreId == -1)) {
                 continue;
             }
 
             $elem = [
                 self::SHOP_TABLE_COLUMNS[0] => $line[0],    // name.
                 self::SHOP_TABLE_COLUMNS[1] => $areaId,     // area_id.
-                self::SHOP_TABLE_COLUMNS[2] => $categoryId, // category_id.
+                self::SHOP_TABLE_COLUMNS[2] => $genreId,    // genre_id.
                 self::SHOP_TABLE_COLUMNS[3] => $line[3],    // description.
             ];
 
@@ -66,14 +66,14 @@ class ShopsTableSeeder extends Seeder
         return $areaId;
     }
 
-    private function getCategoryId($categoryName, $lineNum)
+    private function getGenreId($genreName, $lineNum)
     {
-        $categoryId = Category::getIdFromCategoryName($categoryName);
+        $genreId = Genre::getIdFromGenreName($genreName);
 
-        if ($categoryId == -1) {
-            $this->command->line('Load Error: category = ' . $categoryName . ' ( line = ' . $lineNum . ')');
+        if ($genreId == -1) {
+            $this->command->line('Load Error: genre = ' . $genreName . ' ( line = ' . $lineNum . ')');
         }
 
-        return $categoryId;
+        return $genreId;
     }
 }
