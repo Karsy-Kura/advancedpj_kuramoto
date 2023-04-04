@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Favorite;
+use App\Models\Reserve;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -14,7 +17,17 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $reserves = Reserve::with('users')->where('user_id', $user->id)->get();
+        $favorites = Favorite::with('users')->where('user_id', $user->id)->get();
+
+        $param = [
+            'user' => $user,
+            'reserves' => $reserves,
+            'favorites' => $favorites,
+        ];
+
+        return view('mypage', $param);
     }
 
     /**

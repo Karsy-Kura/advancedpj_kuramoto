@@ -1,0 +1,87 @@
+.mypage--grid {
+  width: 100%;
+  display: grid;
+  grid-template-rows: 50px auto;
+  grid-template-columns: 4.5fr 5fr;
+}
+.mypage__user {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.mypage__user__name {
+  font-size: 30px;
+  font-weight: bold;
+}
+.mypage__caption {
+  font-size: 24px;
+  font-weight: bolder;
+  margin: 15px 0;
+}
+.mypage__list {
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.mypage__list__elem {
+  margin: 15px 20px 15px 0;
+}
+.mypage__reserves {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.mypage__reserves__card {
+  width: 400px;
+  padding: 20px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #305dff;
+  border-radius: 10px;
+}
+.mypage__reserves__card--title {
+  margin-bottom: 20px;
+  position: relative;
+}
+.mypage__reserves__card--title img, .mypage__reserves__card--title p, .mypage__reserves__card--title form {
+  vertical-align: middle;
+  display: inline;
+}
+.mypage__reserves__card--title img {
+  margin-right: 15px;
+  width: 22px;
+  height: 22px;
+}
+.mypage__reserves__card--title form {
+  position: absolute;
+  right: 0;
+}
+.mypage__reserves__card--delete {
+  width: 22px;
+  height: 22px;
+  border: 2px #fff solid;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.mypage__reserves__card--delete span {
+  line-height: 16px;
+  text-align: center;
+  vertical-align: center;
+  font-weight: bold;
+}
+.mypage__reserves__card--table__tr {
+  line-height: 1.8;
+}
+.mypage__reserves__card--table__tr td:nth-child(1) {
+  width: 150px;
+}
+.mypage__reserves__card--table__tr td:nth-child(2) {
+  width: 200px;
+}
+.mypage__favorites {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}/*# sourceMappingURL=mypage.css.map */

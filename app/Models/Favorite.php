@@ -21,4 +21,14 @@ class Favorite extends Model
     public function shops() {
         return $this->belongsTo('App\Models\Shop');
     }
+
+    public function getShopAttribute()
+    {
+        $shop = Shop::find($this->shop_id);
+        if ($shop == null)
+        {
+            return;
+        }
+        return $shop->name;
+    }
 }

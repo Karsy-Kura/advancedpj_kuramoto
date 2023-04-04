@@ -27,6 +27,41 @@ class Reserve extends Model
         return $this->belongsTo('App\Models\Shop');
     }
 
+    public function getShopAttribute()
+    {
+        $shop = Shop::find($this->shop_id);
+        if ($shop == null)
+        {
+            return;
+        }
+        return $shop->name;
+    }
+
+    public function getDateAttribute()
+    {
+        $datetime = self::changeStringToDatetime($this->datetime);
+        if ($datetime == null) {
+            return;
+        }
+
+        return $datetime->format("Y-m-d");
+    }
+
+    public function getTimeAttribute()
+    {
+        $datetime = self::changeStringToDatetime($this->datetime);
+        if ($datetime == null) {
+            return;
+        }
+
+        return $datetime->format("H:i");
+    }
+
+    private function changeStringToDatetime(String $str)
+    {
+        return new DateTimeImmutable($str);
+    }
+
     static public function getReserveInfo($array, $user_id)
     {
         $datetime = $array['date'] . ' ' . $array['time'];
