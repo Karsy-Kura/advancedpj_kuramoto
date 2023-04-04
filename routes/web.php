@@ -25,6 +25,7 @@ Route::group(['prefix' => '/'], function () {
     Route::group(['prefix' => 'detail'], function () {
         Route::get('{shopId}', [ShopController::class, 'detail']);
         Route::post('{shopId}/reserve', [ShopController::class, 'reserve']);
+        Route::get('back', [ShopController::class, 'back']);
     });
 
     Route::get('search', [ShopController::class, 'search']);

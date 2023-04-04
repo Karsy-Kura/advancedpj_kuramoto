@@ -14,9 +14,9 @@ $cssPath = asset("/css/shop.css");
 <div class="main--wrap">
     <div class="shop--detail">
         <div class="shop--detail__header">
-            <button class="shop--detail__back--button" onclick="location.href='/'">
-                &lt;
-            </button>
+                <button class="shop--detail__back--button" onclick="location.href='/'">
+                    &lt;
+                </button>
             <h1 class="shop--detail__name">{{$shop->name}}</h1>
         </div>
         <img src="{{$shop->img_url}}" class="shop--detail__img">
@@ -62,6 +62,8 @@ $cssPath = asset("/css/shop.css");
         </form>
     </div>
 </div>
+@endsection
 
+@section('script--add')
 <script src="{{asset('/js/shop-detail.js')}}"></script>
 @endsection

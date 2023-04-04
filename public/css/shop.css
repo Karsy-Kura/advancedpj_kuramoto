@@ -121,10 +121,6 @@
   padding: 10px 15px;
   border-radius: 5px;
 }
-.shop--card__button--favorite {
-  font-size: 32px;
-  color: #e2e2e2;
-}
 .shop--detail {
   width: 45%;
   min-width: 400px;

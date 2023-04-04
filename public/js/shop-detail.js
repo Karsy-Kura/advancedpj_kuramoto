@@ -35,6 +35,7 @@ function reflectValueOfSelectBox(idForm, idConfirm)
     const tomorrow = dayjs().add(1, "day").format("YYYY-MM-DD");
     formDate.setAttribute("min", tomorrow);
     formDate.value = tomorrow;
+    formDate.setAttribute('value', tomorrow);
     reflectValue('Date');
   }
 

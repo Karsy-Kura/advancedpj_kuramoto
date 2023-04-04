@@ -65,7 +65,16 @@
                 <button class="shop--card__button--detail" onclick="location.href='/detail/{{$shop->id}}'">
                     詳しく見る
                 </button>
-                <button class="shop--card__button--favorite">&hearts;</button>
+                @if (Auth::check())
+                <favorite-component
+                    shop_id="{{$shop->id}}"
+                    favorite_id="{{$shop->user_favorite_id}}"
+                    @if ($shop->user_favorite_id != null)
+                        toggle
+                    @endif
+                    >
+                </favorite-component>
+                @endif
             </div>
         </div>
         @endforeach

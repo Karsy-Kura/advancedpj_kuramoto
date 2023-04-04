@@ -4,29 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Favorite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -35,41 +16,37 @@ class FavoriteController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $shopId = $request['shop_id'];
+        $userId = Auth::id();
+        $favoriteId = $request['favorite_id'];
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Favorite  $favorite
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Favorite $favorite)
-    {
-        //
-    }
+        $condition = [];
+        if ($favoriteId != null)
+        {
+            $condition[] = ['id', $favoriteId];
+        }
+        else
+        {
+            $condition[] = ['shop_id', $shopId];
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Favorite  $favorite
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Favorite $favorite)
-    {
-        //
-    }
+        $param = [
+            'user_id' => $userId,
+            'shop_id' => $shopId
+        ];
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Favorite  $favorite
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Favorite $favorite)
-    {
-        //
+        $favorite = Favorite::withTrashed('users')
+            ->where($condition)
+            ->firstOrCreate($param);
+
+        if ($favorite->trashed() === true)
+        {
+            $favorite->restore();
+        }
+
+        return response()->json([
+            'favorite_id' => $favorite->id,
+        ]);
     }
 
     /**
@@ -78,8 +55,30 @@ class FavoriteController extends Controller
      * @param  \App\Models\Favorite  $favorite
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Favorite $favorite)
+    public function destroy(Request $request)
     {
         //
+        $shopId = $request['shop_id'];
+        $favoriteId = $request['favorite_id'];
+        $userId = Auth::id();
+
+        $condition = [
+            [ 'id', $favoriteId ],
+            [ 'shop_id', $shopId ],
+        ];
+
+        $favorite = Favorite::with('users')
+            ->where($condition)
+            ->first();
+
+        if ($favorite == null)
+        {
+            return response()->json();
+        }
+
+        $result = $favorite->delete();
+        return response()->json([
+            'result' => $result,
+        ]);
     }
 }

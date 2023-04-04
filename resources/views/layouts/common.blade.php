@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div class="wrap">
+    <div class="wrap" id="app">
         <header class="header">
             <div class="header__logo">
                 <button class="header__logo--button" id="header__logo--button">
@@ -50,6 +50,9 @@
         </section>
     </div>
 </body>
-<script src="{{ asset('/js/common.js') }}"></script>
+
+<script src="{{asset('/js/app.js')}}"></script>
+<script src="{{asset('/js/common.js')}}"></script>
+@yield('script--add')
 
 </html>

@@ -35,12 +35,12 @@ class ReserveController extends Controller
      * @param  \Illuminate\Http\ReserveRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ReserveRequest $request)
+    public function destroy(Request $request)
     {
         $reserve_id = $request->id;
 
         $result = Reserve::find($reserve_id)->delete();
 
-        return redirect();
+        return back();
     }
 }

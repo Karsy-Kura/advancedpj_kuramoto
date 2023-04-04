@@ -18,8 +18,13 @@ class UserController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $reserves = Reserve::with('users')->where('user_id', $user->id)->get();
-        $favorites = Favorite::with('users')->where('user_id', $user->id)->get();
+        $reserves = Reserve::with('users')
+            ->where('user_id', $user->id)
+            ->orderBy('datetime', 'asc')
+            ->get();
+        $favorites = Favorite::with('users')
+            ->where('user_id', $user->id)
+            ->get();
 
         $param = [
             'user' => $user,

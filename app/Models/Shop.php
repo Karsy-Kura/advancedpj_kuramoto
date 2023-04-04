@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Shop extends Model
 {
@@ -46,5 +47,26 @@ class Shop extends Model
             return;
         }
         return $genre->name;
+    }
+
+    public function getUserFavoriteIdAttribute()
+    {
+        // ログインしてない場合は必要ない.
+        if (!Auth::check())
+        {
+            return null;
+        }
+
+        $shopFavorites = Favorite::with('shops')->where('shop_id', $this->id)->get();
+        if (($shopFavorites->isEmpty())) {
+            return null;
+        }
+
+        $userFavorite = $shopFavorites->where('user_id', Auth::id())->first();
+        if ($userFavorite === null) {
+            return null;
+        }
+
+        return $userFavorite->id;
     }
 }

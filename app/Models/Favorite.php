@@ -4,14 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Favorite extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
-    protected $guarded = [
+    protected $fillable = [
         'user_id',
         'shop_id',
+        'deleted_id',
     ];
 
     public function users() {
@@ -29,6 +32,6 @@ class Favorite extends Model
         {
             return;
         }
-        return $shop->name;
+        return $shop;
     }
 }
