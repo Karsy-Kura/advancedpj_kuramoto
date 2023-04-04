@@ -19,7 +19,7 @@ $cssPath = asset("/css/shop.css");
             </button>
             <h1 class="shop--detail__name">{{$shop->name}}</h1>
         </div>
-        <img src="{{asset('/img/test.png')}}" class="shop--detail__img">
+        <img src="{{$shop->img_url}}" class="shop--detail__img">
         <p class="shop--detail__tag">
             <span>#{{$shop->area}}</span>
             <span>#{{$shop->genre}}</span>

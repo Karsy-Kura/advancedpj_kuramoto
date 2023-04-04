@@ -15,7 +15,8 @@ class ShopsTableSeeder extends Seeder
         'name',
         'area_id',
         'genre_id',
-        'description'
+        'description',
+        'img_url'
     ];
     /**
      * Run the database seeds.
@@ -24,6 +25,8 @@ class ShopsTableSeeder extends Seeder
      */
     public function run()
     {
+        $
+
         // load data from csv.
         $filePath = public_path() . '/csv/ShopList.csv';
         $file = $this->getCsvFileFromFilePath($filePath);
@@ -48,6 +51,7 @@ class ShopsTableSeeder extends Seeder
                 self::SHOP_TABLE_COLUMNS[1] => $areaId,     // area_id.
                 self::SHOP_TABLE_COLUMNS[2] => $genreId,    // genre_id.
                 self::SHOP_TABLE_COLUMNS[3] => $line[3],    // description.
+                self::SHOP_TABLE_COLUMNS[4] => $line[4],    // img_url.
             ];
 
             // create record.

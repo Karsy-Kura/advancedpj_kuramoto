@@ -21,18 +21,18 @@ class Genre extends Model
         return $this->hasMany('App\Models\Shop');
     }
 
-    public static function getIdFromCategoryName(String $categoryName)
+    public static function getIdFromGenreName(String $genreName)
     {
         $faildId = -1;
-        if (is_null($categoryName)) {
+        if (is_null($genreName)) {
             return $faildId;
         }
 
-        $category = self::where('name', $categoryName)->first();
-        if (is_null($category)) {
+        $genre = self::where('name', $genreName)->first();
+        if (is_null($genre)) {
             return $faildId;
         }
 
-        return $category->id;
+        return $genre->id;
     }
 }

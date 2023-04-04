@@ -36,7 +36,7 @@
             </select>
         </div>
 
-        <span class="search--cond__logo">□</span>
+        <img src="{{asset('/img/icon_search.png')}}" class="search--cond__icon">
         <input type="text" name="store" class="search--cond__text" placeholder="Search ..."
             @if ( isset($query) )
                 value = "{{$query['store']}}"
@@ -51,7 +51,7 @@
     <div class="shop--list">
         @foreach ($shops as $shop)
         <div class="shop--card">
-            <img src="/img/test.png" alt="{{$shop->name}}" class="shop--card__img">
+            <img src="{{$shop->img_url}}" alt="{{$shop->name}}" class="shop--card__img">
 
             <div class="shop--card__text">
                 <h2 class="shop--card__name">{{ $shop->name }}</h2>
