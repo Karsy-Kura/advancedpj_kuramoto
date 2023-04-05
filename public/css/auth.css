@@ -20,8 +20,17 @@
   padding: 5px 7.5%;
   border-radius: 0 0 10px 10px;
 }
+.auth--card__input__error {
+  font-size: 16px;
+  color: #f00;
+  margin-left: 50px;
+  margin-top: 30px;
+  margin-bottom: 0px;
+  list-style-type: circle;
+  text-decoration: underline;
+}
 .auth--card__input__elem {
-  margin: 15px auto;
+  margin: 5px auto;
 }
 .auth--card__input__elem--icon {
   width: 10%;

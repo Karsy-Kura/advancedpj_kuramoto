@@ -1,7 +1,7 @@
 @extends('layouts.common')
 
 <?php
-    $cssPath = asset("/css/auth.css");
+$cssPath = asset("/css/auth.css");
 ?>
 @section('css', $cssPath)
 
@@ -13,6 +13,11 @@
     <div class="auth--card__input">
         <form action="/login" method="post">
             @csrf
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li class="auth--card__input__error">{{$error}}</li>
+                @endforeach
+            </ul>
             <div class="auth--card__input__elem">
                 <img src="{{asset('/img/icon_email.png')}}" class="auth--card__input__elem--icon">
                 <input type="email" name="email" class="auth--card__input__elem--text" placeholder="Email">
