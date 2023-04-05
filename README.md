@@ -14,19 +14,19 @@
 - 店舗詳細情報表示機能
 - 店舗検索機能(タグ、店名)
 - ユーザー機能
-- - ログイン機能
-- - 登録機能
-- - 予約機能
-- - 店舗お気に入り機能
+  - ログイン機能
+  - 登録機能
+  - 予約機能
+  - 店舗お気に入り機能
 
 ## 使用技術
 - Laravel 8.x
-- - Laravel breeze
-- - php 8.1
-- - Vue.js
-- MySQL
-- AWS Linux
-- - EC2
+  - Laravel breeze
+  - php 8.1
+  - Vue.js
+  MySQL
+  AWS Linux
+  - EC2
 
 ## テーブル設計
 ![テーブル設計図](./img/table.png)
@@ -71,12 +71,12 @@ $ php atisan serve
 
 ## その他
 - テーブルレコードを増やす方法
-- - `public/csv/*List.csv`に追記して、シーディング実行
-- - 同一のレコードは作成しない仕様になっているので、追記のみで可
+  - `public/csv/*List.csv`に追記して、シーディング実行
+  - 同一のレコードは作成しない仕様になっているので、追記のみで可
 
 - お気に入り機能のコンポーネント編集方法
-- - `resource/js/components/FavoriteComponent.vue`にて変更・編集が可能
-- - 編集後は下記コマンドを実行し、変更をコンパイルする必要がある
+  - `resource/js/components/FavoriteComponent.vue`にて変更・編集が可能
+  - 編集後は下記コマンドを実行し、変更をコンパイルする必要がある
 ```
 $ npm run dev  // 開発環境.
 $ npm run prod // 製品環境.
