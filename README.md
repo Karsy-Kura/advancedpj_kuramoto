@@ -24,8 +24,8 @@
   - Laravel breeze
   - php 8.1
   - Vue.js
-  MySQL
-  AWS Linux
+- MySQL
+- AWS Linux
   - EC2
 
 ## テーブル設計
