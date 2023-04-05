@@ -1,64 +1,86 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Rese (リーズ)
+ある企業のグループ会社の飲食店予約サービス.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![店舗一覧](./img/index.png)
+![店舗詳細](./img/shop-detail.png)
+![マイページ](./img/mypage.png)
 
-## About Laravel
+## 作成した目的.
+他社の同系統サービス利用時の手数料を抑えるため、自社用のサービスを作成.
+(CoachTechの模擬案件課題として作成)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 機能一覧.
+- 店舗一覧表示機能
+- 店舗詳細情報表示機能
+- 店舗検索機能(タグ、店名)
+- ユーザー機能
+- - ログイン機能
+- - 登録機能
+- - 予約機能
+- - 店舗お気に入り機能
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 使用技術
+- Laravel 8.x
+- - Laravel breeze
+- - php 8.1
+- - Vue.js
+- MySQL
+- AWS Linux
+- - EC2
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## テーブル設計
+![テーブル設計図](./img/table.png)
 
-## Learning Laravel
+## ER図
+![ER](./img/ER.drawio.png)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# 環境構築
+開発環境での実行手順(Laravelがインストールされている前提)
+- 適切な場所にリポジトリを取得.
+- コマンドラインにて`mysql`を実行、対象のデータベースを作成.
+```
+$ mysql -u root -p
+Enter :
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+mysql> CREATE DATEABASE データベース名
+```
+- `.env`ファイルを`.env.example`をコピーして、下記にデータベース名を記載.
+```
+DB_DATABASE=データベース名
+```
 
-## Laravel Sponsors
+- プロジェクトディレクトリに移動し、マイグレーションを実行.
+```
+$ php artisan migrate
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- シーディングを下記の順に実行
+```
+// 先に実行.
+$ php artisan db:seed --class=AreasTableSeeder 
+$ php artisan db:seed --class=GenresTableSeeder 
 
-### Premium Partners
+// 上記2つのテーブルを利用するため、後に実行.
+$ php artisan db:seed --class=ShopsTableSeeder 
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+- 下記コマンドで実行、ブラウザで起動確認.
+```
+$ php atisan serve
+```
 
-## Contributing
+## その他
+- テーブルレコードを増やす方法
+- - `public/csv/*List.csv`に追記して、シーディング実行
+- - 同一のレコードは作成しない仕様になっているので、追記のみで可
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- お気に入り機能のコンポーネント編集方法
+- - `resource/js/components/FavoriteComponent.vue`にて変更・編集が可能
+- - 編集後は下記コマンドを実行し、変更をコンパイルする必要がある
+```
+$ npm run dev  // 開発環境.
+$ npm run prod // 製品環境.
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+// 上記を行ってから、ブラウザで確認.
+$ php artisan serve
+```

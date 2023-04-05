@@ -13,9 +13,9 @@ $cssPath = asset("/css/auth.css");
     <div class="auth--card__input">
         <form action="/login" method="post">
             @csrf
-            <ul>
+            <ul class="auth--card__input__error">
                 @foreach ($errors->all() as $error)
-                <li class="auth--card__input__error">{{$error}}</li>
+                <li >{{$error}}</li>
                 @endforeach
             </ul>
             <div class="auth--card__input__elem">
