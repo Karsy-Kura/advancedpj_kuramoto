@@ -93,7 +93,8 @@ class ShopsTableSeeder extends Seeder
             $res = Storage::disk('local')->putFileAs('public/img', $url, $filename);
         }
         else if (app()->isProduction()) {
-            $res = Storage::disk('s3')->putFileAs('img', $url, $filename);
+            // $res = Storage::disk('s3')->putFileAs('img', $url, $filename);
+            $res = Storage::disk('local')->putFileAs('public/img', $url, $filename);
         }
         else {
             return;

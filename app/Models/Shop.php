@@ -53,8 +53,7 @@ class Shop extends Model
     public function getUserFavoriteIdAttribute()
     {
         // ログインしてない場合は必要ない.
-        if (!Auth::check())
-        {
+        if (!Auth::check()) {
             return null;
         }
 
@@ -71,8 +70,17 @@ class Shop extends Model
         return $userFavorite->id;
     }
 
-    public function getImgSrcAttribute() {
-        $path = Storage::url($this->img_url);
+    public function getImgSrcAttribute()
+    {
+        $path = null;
+        if (app()->isLocal()) {
+            $path = Storage::disk('local')->url($this->img_url);
+        }
+        else if (app()->isProduction()) {
+            // $path = Storage::disk('s3')->url($this->img_url);
+            $path = Storage::disk('local')->url($this->img_url);
+        }
+
         return $path;
     }
 }
