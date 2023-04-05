@@ -1,0 +1,112 @@
+.mypage {
+  &--grid {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 50px auto;
+    grid-template-columns: 4.5fr 5.5fr;
+  }
+
+  &__user {
+    grid-column: 2/3;
+    grid-row: 1/2;
+
+    &__name {
+      font-size: 30px;
+      font-weight: bold;
+    }
+  }
+
+  &__caption {
+    font-size: 24px;
+    font-weight: bolder;
+    margin: 15px 0;
+  }
+
+  &__list {
+    display: flex;
+    width: 95%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+  }
+
+  &__reserves {
+    grid-column: 1/2;
+    grid-row: 2/3;
+
+    &__card {
+      width: 400px;
+      padding: 20px;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: #fff;
+      background-color: #305dff;
+      border-radius: 10px;
+      display: inline-block;
+
+      &--title {
+        margin-bottom: 20px;
+        position: relative;
+
+        & img, p, form {
+          vertical-align: middle;
+          display: inline;
+        }
+
+        & img {
+          margin-right: 15px;
+          width: 22px;
+          height: 22px;
+        }
+
+        & form {
+          position: absolute;
+          right: 0;
+        }
+      }
+
+      &--delete {
+        width: 22px;
+        height: 22px;
+        border: 2px #fff solid;
+        border-radius: 50%;
+        color: #fff;
+
+        display: flex;
+        justify-content: center;
+        align-content: center;
+
+        & span {
+          line-height: 16px;
+          text-align: center;
+          vertical-align: center;
+          font-weight: bold;
+        }
+      }
+
+      &--table {
+
+        &__tr {
+          line-height: 1.8;
+
+          & td:nth-child(1) {
+            width: 150px;
+          }
+
+          & td:nth-child(2) {
+            width: 200px;
+          }
+        }
+      }
+    }
+  }
+
+  &__favorites {
+    grid-column: 2/3;
+    grid-row: 2/3;
+
+
+  }
+}

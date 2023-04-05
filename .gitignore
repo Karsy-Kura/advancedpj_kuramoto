@@ -13,9 +13,9 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
-/public/css/*.scss
 /public/css/*.css.map
 /public/img/test.png
 /resources/sass/app.css
 /resources/sass/*.scss
 /resources/sass/*.css.map
+*.cmd

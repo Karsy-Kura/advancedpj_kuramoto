@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class Shop extends Model
 {
@@ -68,5 +69,10 @@ class Shop extends Model
         }
 
         return $userFavorite->id;
+    }
+
+    public function getImgSrcAttribute() {
+        $path = Storage::url($this->img_url);
+        return $path;
     }
 }

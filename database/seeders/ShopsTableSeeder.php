@@ -6,6 +6,8 @@ use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Shop;
 use Illuminate\Database\Seeder;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 class ShopsTableSeeder extends Seeder
 {
@@ -44,12 +46,14 @@ class ShopsTableSeeder extends Seeder
                 continue;
             }
 
+            $res = self::saveImgToStrageFromURL($line[4]);
+
             $elem = [
                 self::SHOP_TABLE_COLUMNS[0] => $line[0],    // name.
                 self::SHOP_TABLE_COLUMNS[1] => $areaId,     // area_id.
                 self::SHOP_TABLE_COLUMNS[2] => $genreId,    // genre_id.
                 self::SHOP_TABLE_COLUMNS[3] => $line[3],    // description.
-                self::SHOP_TABLE_COLUMNS[4] => $line[4],    // img_url.
+                self::SHOP_TABLE_COLUMNS[4] => $res,    // img_url.
             ];
 
             // create record.
@@ -77,5 +81,24 @@ class ShopsTableSeeder extends Seeder
         }
 
         return $genreId;
+    }
+
+    private function saveImgToStrageFromURL(String $url)
+    {
+        $splits = explode("/", $url);
+        $filename = $splits[count($splits) - 1];
+
+        $res = null;
+        if (app()->isLocal()) {
+            $res = Storage::disk('local')->putFileAs('public/img', $url, $filename);
+        }
+        else if (app()->isProduction()) {
+            $res = Storage::disk('s3')->putFileAs('img', $url, $filename);
+        }
+        else {
+            return;
+        }
+
+        return $res;
     }
 }

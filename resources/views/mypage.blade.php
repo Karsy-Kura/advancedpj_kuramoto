@@ -66,7 +66,7 @@
                     $shop = $favorite->shop;
                     @endphp
                     <div class="shop--card">
-                        <img src="{{$shop->img_url}}" alt="{{$shop->name}}" class="shop--card__img">
+                        <img src="{{$shop->img_src}}" alt="{{$shop->name}}" class="shop--card__img">
 
                         <div class="shop--card__text">
                             <h2 class="shop--card__name">{{ $shop->name }}</h2>

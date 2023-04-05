@@ -1,0 +1,128 @@
+body {
+  position: relative;
+  background-color: #eee;
+}
+
+.wrap {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.header {
+  width: 80%;
+  margin: 50px auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &__logo {
+    display: inline-block;
+
+    &--button {
+      height: 44px;
+      aspect-ratio: 1/1;
+      padding: 4px;
+      margin-right: 10px;
+      background-color: #305dff;
+      box-shadow: 3px 3px 4px #aaa;
+      border-radius: 5px;
+      position: relative;
+      display: inline;
+      vertical-align: middle;
+      z-index: 100;
+
+      &__line {
+        &--top,
+        &--middle,
+        &--bottom {
+          display: inline-block;
+          height: 1px;
+          background-color: #fff;
+          position: absolute;
+          transition: 0.5s;
+          left: 8px;
+        }
+
+        &--top {
+          width: 12px;
+          top: 12px;
+        }
+
+        &--middle {
+          width: 24px;
+          top: 22px;
+        }
+
+        &--bottom {
+          width: 6px;
+          bottom: 12px;
+        }
+      }
+
+      &.open span:nth-of-type(1) {
+        opacity: 0;
+      }
+
+      &.open span:nth-of-type(2) {
+        transform: rotate(45deg);
+      }
+
+      &.open span:nth-of-type(3) {
+        transform: rotate(-45deg);
+      }
+
+      &.open span:nth-of-type(4) {
+        opacity: 0;
+      }
+    }
+
+    &--text {
+      display: inline;
+      vertical-align: middle;
+      font-size: 36px;
+      font-weight: bolder;
+      color: #305dff;
+    }
+  }
+
+  &__menu {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    transition: 0.5s;
+    text-align: center;
+    background-color: #eee;
+    z-index: 10;
+
+    & ul {
+      width: 100%;
+      display: inline-block;
+      margin: 100px auto;
+    }
+
+    &__elem {
+      font-weight: normal;
+      font-size: 36px;
+      margin: 20px;
+
+      & a , button{
+        color: #305dff;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.in {
+  transform: translateX(100%);
+}
+
+.display--none {
+  display: none;
+}
