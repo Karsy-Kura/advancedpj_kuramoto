@@ -84,3 +84,24 @@ $ npm run prod // 製品環境.
 // 上記を行ってから、ブラウザで確認.
 $ php artisan serve
 ```
+
+### 追加実装項目
+
+- バリデーション
+  - RegisterRequest : 登録
+  - LoginRequest   : 認証
+  - ReserveRequest : 予約
+  - SearchRequest : 検索
+
+- ストレージ
+  - URL先から取得した画像をStorageに保存.
+  - public/storage にlinkを作り、そのファイルを参照して表示.
+
+- AWS
+  - ストレージ(S3) : 未達成 (画像のアップロードはできたが、参照ができなかった)
+  - バックエンド(EC2) : 達成 (インスタンス先のURL-> `http://3.27.16.185/`)
+  - データベース(RDS) : 達成 (EC2からRDSのデータベースにmysql通信)
+
+- (環境の切り分け)
+  - ストレージの処理の合わせて、ほんの少しだけ利用
+  - isLocal()とisProduction()を利用、ストレージ先を`local`と`s3`で分けようとした
