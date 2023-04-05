@@ -25,8 +25,6 @@ class ShopsTableSeeder extends Seeder
      */
     public function run()
     {
-        $
-
         // load data from csv.
         $filePath = public_path() . '/csv/ShopList.csv';
         $file = $this->getCsvFileFromFilePath($filePath);
